@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>속성 제어</h1>
+  <P>클릭하세요.</P>
+  <img src="../images/1.jpg" width="500" height="300" alt="단체사진">
+  <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      let index = 1;
+      $('img').click(function(){
+        index = (index % 4) + 1;
+        $(this).attr('src', '../images/' + index + '.jpg');
+      })
+    })
+  </script>
+</body>
+</html>

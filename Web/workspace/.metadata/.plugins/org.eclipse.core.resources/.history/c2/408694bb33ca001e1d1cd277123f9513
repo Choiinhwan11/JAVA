@@ -1,0 +1,9 @@
+package user.dao;
+
+public class UserDAO {
+	private static UserDAO userDAO = new UserDAO();
+	public UserDAO getInstance() {
+		return userDAO;
+	}
+	
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .imgDiv1{
+      border: 8px dashed pink;
+      width: 150px;
+      height: 150px;
+      margin: 100px;
+      overflow: hidden;
+    }
+    .imgDiv2{
+      border: 1px solid red;
+      width: 150px;
+      height: 150px;
+      margin: 100px;
+      overflow: visible;
+    }
+    .imgDiv3{
+      border: 1px solid red;
+      width: 150px;
+      height: 150px;
+      margin: 100px;
+      overflow: scroll;
+    }
+    .imgDiv4{
+      border: 1px solid red;
+      width: 150px;
+      height: 150px;
+      margin: 100px;
+      overflow: auto;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .imgDiv1:hover img{
+      transform: scale(1.4);
+    }
+    .imgDiv1 img{
+      /*애니매이션 효과 -- 마우스 오버시 이미지가 즉시 커지지 않고
+                          30.5초시간에 걸쳐서 커진다. */
+      transition: all 1s linear;
+    }
+  </style>
+</head>
+<body>
+  <div class="imgDiv1">
+    <img src="../image/img2.png" alt="망상토끼">
+  </div>
+  <div class="imgDiv2">
+    <img src="../image/img2.png" alt="망상토끼">
+  </div>
+  <div class="imgDiv3">
+    <img src="../image/img2.png" alt="망상토끼">
+  </div>
+  <div class="imgDiv4">
+    <img src="../image/img2.png" alt="망상토끼">
+  </div>
+</body>
+</html>
+<!-- 
+transform: scale
+- box안의 이미지를 확대할 때 사용한다.
+
+transition
+- 시간의 흐름을 줘서 부드럽게 확대되도록 설정한다.
+- ease : 기본값, 느리게 시작해서 빠르게 전환한 다음 다시 천천히 종료
+  linear : 처음부터 끝까지 같은 속도로 전환
+ -->

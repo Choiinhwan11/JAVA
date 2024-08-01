@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+	<h1 class="title">아이디 중복검사</h1>
+	<div class="exec">
+	   <input type="text" name="user_id"/>
+	   <input type="button" id="check_id" value="중복검사"/>
+	 	</div>
+	   <div class="console" id="result"></div>
+	<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+	 <script>
+	   $(function(){
+		   
+	   });
+	 </script>
+</body>
+</html>

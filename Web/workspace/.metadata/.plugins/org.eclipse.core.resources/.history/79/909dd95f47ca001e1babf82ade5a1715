@@ -1,0 +1,33 @@
+package user.service;
+
+import java.util.Scanner;
+
+public class UserUpdateService implements UserService  {
+
+	@Override
+	public void execute() {
+		System.out.println("찾고자 하는 아이디를 입력하세요 :");
+		Scanner sc = new Scanner(System.in);
+		String id = sc.nextLine();
+		
+		/*
+		 * 찾고자 하는 아이디가 없습니다.
+		 * 
+		 * 또는 
+		 * 찾고자 하는 아이디 입력 : hong
+		 * 홍길동 hong 111
+		 * 
+		 * 수정할 이름 입력 : 홍당무
+		 * 수정할 비밀번호 입력 : 333
+		 * 수정할 비밀번호 입력 : 333
+		 * 
+		 * 회원 정보 수정 완료
+		 * */
+		//		List<UserDTO> list = userDAO.getUserList();
+//		for(UserDTO userDTO : list) {
+//			System.out.println(userDTO.getName() + "/t" + userDTO.getId() + "/t" + userDTO.getPwd());
+//		}
+		
+	}
+
+}

@@ -1,0 +1,37 @@
+package user.service;
+
+import java.util.List;
+import java.util.Scanner;
+
+import user.bean.UserDTO;
+import user.dao.UserDAO;
+
+public class UserUpdateService implements UserService  {
+
+	@Override
+	public void execute() {
+		String name, id, pwd;
+		System.out.println("찾고자 하는 아이디를 입력하세요 :");
+		Scanner sc = new Scanner(System.in);
+		id = sc.next();
+		UserDAO userDAO = UserDAO.getInstance();
+		List<UserDTO> list = userDAO.getUserList();
+		for(UserDTO change : list) {
+			if(change.getId().equals(id)) {
+				System.out.println("이름 입력:");
+				name = sc.next();
+				System.out.println("비밀번호 입력:");
+				pwd = sc.next();
+				UserDTO userDTO = new UserDTO();
+				userDTO.setName(name);
+				userDTO.setId(id);
+				userDTO.setPwd(pwd);
+				userDAO.update(userDTO);
+				System.out.println("회원수정이 완료되었습니다.");
+				return;
+			}
+		}
+		System.out.println("찾으시는 회원이 없습니다.");
+		return;
+	}
+}

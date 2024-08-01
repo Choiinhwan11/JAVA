@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+  <h1 class="title">$.ajax() 함수를 사용한 데이터 읽기 (2)</h1>
+  <div class="exec">
+    <input type="button" value="txt파일 가져오기" id="mybtn"/>
+  </div>
+  <div class="console" id="result"></div>
+  <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      $('#mybtn').click(function(){
+        $.ajax({
+          type: 'get',
+          url: 'http://localhost:8081/workspace/AJax_jQuery/text/text01.txt',
+          dataType: 'text',
+          timeout: 30000,
+          cache : false,
+          success : function(data){
+            $('#result').html(data);
+          },
+          error : function(xhr, txtStatus, errorThrown){
+            $('div').html('<div>' + textStatus + '(HTTP-' + xhr.status + '/' + xhr.errorThrown + ')<div>') 
+          }
+        });
+      })
+    })
+  </script>
+</body>
+</html>

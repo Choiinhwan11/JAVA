@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+
+	<h1 class="title">$.ajax()함수를 이용한 json 읽기 </h1>
+	<div class="exec">
+		<input type="button"value="json데이터를 가져오기 " id="mybtn"> 
+	</div>
+	<div class="consol" id="result"></div>
+	<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+	<script>
+		$(function(){
+			$('#mybtn').click(function(){
+				$.ajax({
+					type:'get',
+					url:'../json/sjon01.josn',
+					dataType:'json',
+					success:function(data){
+					consol.log(JSON.stringify(data));//stringify ~을 꺼내올때사용한다. 
+					
+					var title=data.school.subject.title;
+					var time=data.school.subject.time;
+					var teacher=data.school.subject.teacher;
+					
+					var ul=$('<ul/>');
+					var li1=$('<li/>').html(title);
+					var li2=$('<li/>').html(time);
+					var li3=$('<li/>').html(teacher);
+					
+					ul.append(li1).append(li2).append(li3)
+					$('#result').append(li)
+					
+					},
+					error:function(err){
+						consol.log(err);
+					}
+				})
+			})
+		});
+	</script>
+	
+</body>
+</html>
+<!-- xml은 바로 뿌릴 수 없다 . 그래서 귀찮다 . find를 갖고 해야한다. 
+1. json 객체가 필요하다 . 
+json 객체는 {
+변수: 값,
+변수: 값
+변수: 값
+
+} 를 해야한다 .
+css 와 다른점은 쉼표로 항목끼리의 묶음을 나타내야한다. 
+
+2.json 배열이 들어간다 . 
+ -->

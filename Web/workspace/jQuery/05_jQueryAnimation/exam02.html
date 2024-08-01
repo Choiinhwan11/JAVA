@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn{
+      background: cyan;
+    }
+  </style>
+</head>
+<body>
+  <h1>show/hide</h1>
+  <div id="sh">
+    <input type="button" class="btn" value="보이기">
+    <input type="button" value="숨기기">
+    <input type="button"value="토글">
+    <div>
+      <img src="../images/1.jpg" alt="카카오 단체사진" width="400px" height="270px">
+    </div>
+  </div>
+<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+<script>
+  $(function(){
+    $('#sh > input:eq(0)').click(function(){
+      $('#sh img').show(200);
+      return false;
+    })
+    $('#sh > input:eq(1)').click(function(){
+      $('#sh img').hide(200);
+      return false;
+    })
+    $('#sh > input:eq(2)').click(function(){
+      $('#sh img').toggle(200);
+      return false;
+    })
+
+    $('#sh > input').click(function(){
+      //클릭한 버튼을 제외한 모든 버튼에서 class="btn" 속성을 제거
+      $('#sh > input').not(this).removeClass('btn');
+
+      //클릭한 버튼에 class="btn" 속성 부여
+      $(this).addClass('btn');
+    })
+  });
+</script>
+</body>
+</html>
+<!--[문제]클릭할 때마다 버튼의 색깔을 cyan으로 바꾸고 나머지는 원래의 색으로 바꾼다.-->

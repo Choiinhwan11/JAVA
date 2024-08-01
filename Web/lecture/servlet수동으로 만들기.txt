@@ -1,0 +1,114 @@
+서버 - 서비스를 제공한다.
+
+http://localho:8080/ROOT/hello.html 
+루트라는 말은 쓰면 안된다. 알아서 생성해준다.
+
+웹- 
+html
+
+Servlet(HTML in JAVA)
+
+JSP(JAVA in HTML)
+
+package com.hello;
+import javax.http.servlet.HttpServlet;
+import javax.http.servlet.HttpServletRequest;
+import javax.http.servlet.HttpServletResponse;
+public class  HelloServlet extends HttpServlet{
+	public void init(){
+		System.out.println("init()");
+	}
+	public void doGet(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("doGet()");
+	}
+	public void destroy(){
+		System.out.println("destroy()");
+	}
+}
+WEB-INF에 classes(*.class) 를 만들어줘야한다.
+WEB-INF에 src(*.java) 를 만들어줘야한다.
+WEB-INF에 src에 클래스명.java로 저장
+*모든 자바 파일은 반드시 컴파일 해야한다.
+javac -d ../classes HelloServlet.java
+환경변수 Path
+CLASSPATH
+.;C:\Tomcat 10.1\lib\servlet-api.jar; -> 오류를 잡아주려면 자르파일이 필요하기에 그 path를 설정해준 것이다.
+
+
+web.xml 에 Servlet 등록
+=> 어노테이션 등록
+
+-----xml
+<servlet>
+  	<servlet-name>HelloServlet</servlet-name>
+	<servlet-class>com.hello.HelloServlet.java</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>HelloServlet</servlet-name>
+	<url-pattern>/HelloServlet</url-pattern>
+  </servlet-mapping>
+
+4. URL
+http://localhost:8888/HelloServlet (servlet-class에서 설정해놨기 떄문)
+
+5. context.xml
+=> 컴파일할 때마다 Tomcat은 껏다가 켜야한다.
+
+// 1.콘솔로 출력 
+		System.out.println("<html>");
+		// 2.파일로 출력
+		PrintWriter out = new PrintWriter(new FileWriter("result.txt"));
+		out.println("<html>");
+		// 3. 웹
+
+
+
+
+ECLIPSE
+
+
+
+package hello.hellospring;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Main {
+	public static void main(String[] args) {
+		SpringApplication.run(Main.class, args);
+	}
+
+}
+
+
+
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+

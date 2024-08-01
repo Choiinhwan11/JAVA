@@ -1,0 +1,30 @@
+<!DOCTYPE html
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+	<h1 class="title">아이디 중복검사</h1>
+	<div class="exec">
+	   <input type="text" name="user_id"/>
+	   <input type="button" id="check_id" value="중복검사"/>
+	 	</div>
+	   <div class="console" id="result"></div>
+	<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+	 <script>
+	   $(function(){
+		   $('#checkId').click(function(){
+			  var user_id = $('input[name="user_id"]').val();
+			  if(!user_id){
+				  alert("아이디를 입력하세요.");
+				  $('input[name="user_id"]').focus();
+				  return false;
+			  }
+		   });
+	   });
+	 </script>
+</body>
+</html>

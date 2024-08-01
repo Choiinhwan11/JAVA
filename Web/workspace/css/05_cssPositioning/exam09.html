@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      width: 15em;
+      height: 3em;
+      border: 1px solid lightgray;
+    }
+    .hidden{
+      overflow: hidden;
+    }
+    .visible{
+      overflow: visible;
+    }
+    .scroll{
+      overflow: scroll;
+    }
+    .auto1{
+      overflow: auto;
+    }
+    .auto2{
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h3>overflow 프로퍼티</h3>
+  <hr>
+  <p class="hidden">overflow 에 hidden값을 적용하면 박스를 넘어가는 내용이 잘려 보이지 않습니다.</p><br>
+  <p class="visible">overflow 에 visible값을 적용하면 콘텐트가 박스를 넘어가서도 출력이 됩니다.</p><br>
+  scroll
+  <p class="scroll">overflow 에 scroll값을 적용하면 박스에 스크롤바를 붙여 출력합니다.</p><br>
+  auto1
+  <p class="auto1">overflow 에 auto값을 적용하면 콘텐트가 박스를 넘어갔을 떄 박스에 스크롤바를 붙여 출력합니다.</p><br>
+  auto2
+  <p class="auto2">overflow 에 auto값을 적용</p><br>
+</body>
+</html>

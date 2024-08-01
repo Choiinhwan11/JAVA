@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul{
+      list-style-type: none;
+    }
+    li{
+      margin: 15px;
+    }
+    div input{
+      background-color: white;
+      border: 1px solid red;
+      color: red;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    #nameDiv, #ageDiv{
+      display: inline-box;
+      float: left;
+      color: red;
+      font-size: 0.7em;
+    }
+
+    label{
+      float: left;
+      width: 50px;
+    }
+  </style>
+</head>
+<body>
+  <form action="http://localhost:8080/testServlet22/param"  method="post" name="inputForm">
+
+    <ul>
+      <li>
+        <label>이름</label>
+        <input type="text" name="nameI">
+        <div id="nameDiv"></div>
+      </li>
+      <li>
+        <label>나이</label>
+        <input type="text" name="ageI">
+        <div id="ageDiv"></div>
+      </li>
+      <li>
+        <div>
+          <input type="button" onclick="sendInfo()" value="SEND">
+        </div>
+      </li>
+    </ul>
+
+  </form>
+  <script>
+    function sendInfo(){
+      let count = 0;
+      if(document.inputForm.nameI.value==""){
+        document.getElementById("nameDiv").innerHTML = "이름을 입력해주세요.";
+       // count++;
+      }else{
+        document.getElementById("nameDiv").innerHTML = "";
+      }
+      if(document.inputForm.ageI.value==""){
+        document.getElementById("ageDiv").innerHTML = "이름을 입력해주세요."
+       // count++;
+      }else{
+        document.getElementById("ageDiv").innerHTML = "";
+      }
+      //if(count == 2){
+	      document.inputForm.submit();
+      //}
+    }
+  </script>
+  
+</body>
+</html>

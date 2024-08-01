@@ -1,0 +1,193 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%> -->
+         <!DOCTYPE html>
+         <html>
+         <head>
+             <meta charset="UTF-8">
+             <title>회원가입</title>
+             <style>
+                 table, th, td{
+                     border-collapse : collapse;
+                     border: 1px solid #222;
+                 }
+                 #nameDiv, #telDivaddrDiv{
+                     color: blue;
+                     font-size : 14px;
+                     font-weight : bold;
+                 }
+             </style>
+         </head>
+         <body>
+         <form id="form1" method="post" action="write.jsp">
+           <table>
+             <tr>
+                 <th>식당 이름</th>
+                 <td style="width: 400px">
+                     <input type="text" size="20" id="name" name="name" placeholder="이름 입력">
+                     <div id="nameDiv"></div>
+                 </td>
+             </tr>
+             <tr>
+               <th>식당 전화번호</th>
+               <td>
+                   <select name="tel1" id="tel">
+                       <option value="010">010</option>
+                       <option value="011">011</option>
+                       <option value="019">019</option>
+                   </select>
+                   <input style="font-size : 1em; width: 4em;" type="text" name="tel2" size="10">
+                   <input style="font-size : 1em; width: 4em;" type="text" name="tel3" size="10">
+                   <div id="telDiv"></div>
+               </td>
+             </tr>
+             <tr>
+               <th>주 소</th>
+               <td>
+                   <div>
+                       <input type="text" name="zipcode" id="zipcode" readonly>
+                       <input type="button" value="우편번호검색" onclick="checkPost()">
+                   </div>
+                   <div>
+                       <input style="width:95%;" type="text" name="addr1" id="addr1" placeholder="주소" readonly>
+                   </div>
+                   <div>
+                       <input style="width:95%;" type="text" name="addr2" id="addr2" placeholder="상세주소">
+                   </div>
+                   <div id="addrDiv"></div>
+               </td>
+             </tr>
+             <tr>
+               <th>제목</th>
+               <td style="width: 400px">
+                   <input type="text" size="20" id="name" name="name" placeholder="이름 입력">
+                   <div id="nameDiv"></div>
+               </td>
+               <div id="titleDiv"></div>
+             </tr>
+             <tr>
+               <th>식당내용</th>
+               <td style="width: 400px">
+                   <input type="text" size="20" id="name" name="name" placeholder="이름 입력">
+                   <div id="nameDiv"></div>
+               </td>
+               <div id="titleDiv"></div>
+           </tr>
+           <tr>
+             <th>식당 예약 가능 시간</th>
+             <td style="width: 400px">
+                 <div name="availtime" id="availtime"></div>
+             </td>
+             <div id="availtimeDiv"></div>
+           </tr>
+           <tr>
+             <th>식당 메뉴</th>
+             <td style="width: 400px">
+               <div id="container">
+                 <h1>Web Programming</h1>
+                 <p>공부할 주제를 기록해 보세요</p>
+                 <p>공부가 끝난 것은 클릭해서 삭제할 수 있습니다.</p>
+                 <form action="">
+                   <input type="text" id="subject" autofocus>
+                   <button onclick="newRegister(); return false;">추가</button>
+                 </form>
+                 <hr>  
+                 <ul id="itemList"> </ul>  
+               </div>
+               <div id="menuDiv"></div>
+             </td>
+           </tr>
+           <tr>
+             <td colspan="2" style="text-align: center">
+                 <input type="button" value="식당등록" onclick="checkWrite()">
+                 <input type="reset" value="다시작성">
+             </td>
+           </tr>	
+         
+           </table>
+         </form>
+         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+         <script>
+             function checkId(){
+                 var id = document.getElementById("id").value
+                 if(id === ""){
+                     alert("먼저 아이디를 입력하세요");
+                 }else{
+                     var checkIdWindow = window.open("checkId.jsp?id=" + id
+                         ,"checkId"
+                         ,"width=450 height=150 left=300 top=150");
+                 }
+             }
+             function onChangeEmail(){
+                 if(document.getElementById("email3").value === "직접입력"){
+                     document.getElementById("email2").value = '';
+                     document.getElementById("email2").focus();
+                 } else {
+                     document.getElementById("email2").value = document.getElementById("email3").value;
+                 }
+             }
+             function checkPost(){
+                 new daum.Postcode({
+                     oncomplete: function(data) {
+                         var addr = '';
+                         if (data.userSelectedType === 'R') {
+                             addr = data.roadAddress;
+                         } else {
+                             addr = data.jibunAddress;
+                         }
+                         document.getElementById('zipcode').value = data.zonecode;
+                         document.getElementById("addr1").value = addr;
+                         document.getElementById("addr2").focus();
+                     }
+                 }).open();
+             }
+             function checkWrite(){
+                 document.getElementById("nameDiv").innerHTML = "";
+                 document.getElementById("idDiv").innerHTML ="";
+                 document.getElementById("pwdDiv").innerHTML ="";
+                 document.getElementById("repwdDiv").innerHTML ="";
+                 if(document.getElementById("name").value === ""){
+                     document.getElementById("nameDiv").innerHTML = "이름을 입력하세요";
+                     document.getElementById("name").focus();
+                 }else if(document.getElementById("id").value === ""){
+                     document.getElementById("idDiv").innerHTML = "아이디를 입력하세요";
+                     document.getElementById("id").focus();
+                 }else if(document.getElementById("pwd").value === ""){
+                     document.getElementById("pwdDiv").innerHTML = "비밀번호를 입력하세요";
+                     document.getElementById("pwd").focus();
+                 }else if(document.getElementById("pwd").value !== document.getElementById("repwd").value){
+                     document.getElementById("repwdDiv").innerHTML = "비밀번호가 일치하지 않습니다";
+                     document.getElementById("repwd").focus();
+                 }else if(document.getElementById("id").value !== document.getElementById("check").value){
+                     alert("중복체크 하세요");
+                 }else {
+                     document.getElementById("form1").submit();
+                 }
+             }
+             function newRegister() {
+               if(document.getElementsByTagName("li").length == 5){
+               	alert("메뉴 최대 개수는 5개 입니다.");
+               }else{
+                 var newItem = document.createElement("li");  // 요소 노드 추가 
+                 var subject = document.querySelector("#menu");  // 폼의 텍스트 필드
+                 var newText = document.createTextNode(subject.value);  // 텍스트 필드의 값을 텍스트 노드로 만들기
+                 newItem.appendChild(newText);  // 텍스트 노드를 요소 노드의 자식 노드로 추가
+         
+                 var itemList = document.querySelector("#itemList");  // 웹 문서에서 부모 노드 가져오기 
+                 itemList.insertBefore(newItem, itemList.childNodes[0]);  // 자식 노드중 첫번째 노드 앞에 추가
+         
+                 subject.value="";
+         
+                 var items = document.querySelectorAll("li");  // 모든 항목 가져오기
+                 for(i=0; i<items.length; i++) {
+                   items[i].addEventListener("click", function() {  // 항목 클릭했을 때 실행할 함수
+                     if(this.parentNode)    // 부모 노드가 있다면 
+                       this.parentNode.removeChild(this);  // 부모 노드에서 삭제
+                   });
+                 }
+               }
+               
+             }
+         </script>
+         
+         </body>
+         </html>

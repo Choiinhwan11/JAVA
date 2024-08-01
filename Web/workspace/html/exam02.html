@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p{
+      border:1px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <p style="border: 1px solid red;">
+    <img src="http://localhost:5500/html/image/img1.gif" alt="망상토끼">
+  </p>
+  <!-- URL
+  1. 절대 번지 
+  http://localhost:5500/html/image/img1.gif
+  http://http://192.168.0.11:5500/html/image/img1.gif
+  2. 상대 번지
+  image/img1.gif-->
+  <!--
+    port가 5500일 경우에는 localhost로 할 수 없다.
+  -->
+  <p>
+    <img src="./image/img1.gif" width="200" height="200" alt="망상토끼">
+  </p>
+  <p>
+    <a href="https://www.naver.com">
+      <img src="./image/img1.gif" width="200" height="200" alt="망상토끼">
+    </a>
+  </p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #myid{
+      background : #ff0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #00f;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="myid">안녕하세요</h1>
+  <h1 id="myid">자바스크립트 입니다<div class=""></div></h1>
+  <h1 id="myid">강의 참재미있죠?</h1>
+  <a href="#" onclick="doPrint()">자바스크립트 함수 호출하기</a>
+
+  <script>
+    function doPrint(){
+      // document.getElementById("myid").innerHTML = "스크립트가 실행되었습니다.";//첫번쨰 id만 실행된다. 그래서 checkbox같이 여러개 달리는 것은 class 속성으로 다는 것이 좋다.
+      document.querySelector("#myid").innerHTML = "스크립트가 실행되었습니다.";
+    }
+  </script>
+</body>
+</html>

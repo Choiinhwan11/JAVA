@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--DB연동 => 만약에 아이디가 'hong'이면 이미 DB에 저장된 아이디로 취급--%>
+<c:set var="result" value="false"/>
+<c:if test="${param.user_id} "></c:if>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

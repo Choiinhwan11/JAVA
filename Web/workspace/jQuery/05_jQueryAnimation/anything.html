@@ -1,0 +1,21 @@
+<script>
+    $(function(){
+        // 탭의 내용은 첫 번째 항목 안에 있는 a 태그가 가리키는 txt 파일을 가져와 출력합니다.
+        $('.collapsible:eq(0) .content').load($('.collapsible:eq(0) .title a').attr('href'));
+        $('.collapsible:eq(0) .title a').addClass('selected');
+        $('.collapsible').not(':eq(0)').find('.content').hide();  
+
+        $('.collapsible .title a').click(function(){
+            $(this).toggleClass('selected');
+            $('.collapsible .title a').not(this).removeClass('selected');
+            var target = $(this).parent().next();
+            var other=$('.content').not(target);
+            target.slideToggle(300);
+            other.slideUp(300);
+            if(target.css('display')!='none'){
+                target.load($(this).attr('href'));
+            }
+            return false;
+        });
+    });
+</script>

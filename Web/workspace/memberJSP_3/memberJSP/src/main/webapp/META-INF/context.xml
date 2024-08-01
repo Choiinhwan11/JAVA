@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="memberJSP" 
+		path="/memberJSP" 
+		reloadable="true" 
+		source="org.eclipse.jst.jee.server:memberJSP">
+	<Resource name="jdbc/oracle"
+			type="javax.sql.DataSource"
+			driverClassName="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@localhost:1521:xe"
+			username="c##java"
+			password="oracle"
+			maxActive="20"
+			maxIdle="3"
+			removeAbandoned="true"/>
+</Context>
+ <!-- 서버가 크면 더 많이 만들어야하는데 로컬이므로 
+ type="javax.sql.DataSource" 은행 여직원
+ name="angel"무엇을 적어도 상관이 없다. 
+ -->

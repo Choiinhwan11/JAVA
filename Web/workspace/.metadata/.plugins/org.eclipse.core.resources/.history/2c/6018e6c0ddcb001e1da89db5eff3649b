@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+  <h1 class="title">$.ajax() 함수를 사용한 데이터 읽기 (2)</h1>
+  <div class="exec">
+    <input type="button" value="txt파일 가져오기" id="mybtn"/>
+  </div>
+  <div class="console" id="result"></div>
+  <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      $('#mybtn').click(function(){
+    	  $.ajax({
+              type: 'get',
+              url: 'http://localhost:8081/workspace/AJax_jQuery/text/text01.txt',
+              dataType: 'text',
+              timeout: 30000,
+              cache : false,
+              success : function(data){
+               /*  $('#result').html(data); */
+            /*     console.log($(data).children().length); */
+      /*     		let div = $('<div/>');//<div></div>
+                let num = $(data).children().length;
+                let nowNode = $(data).children().first();
+                
+                for(let i = 0 ; i < num ; i++){
+                	div.append(p1)
+                }
+                
+          		var title = $(data).find('title').text();
+          		var time = $(data).find('time').text();
+          		var teacher = $(data).find('teacher').text();
+          		
+          		var p1 = $('<p/>').html(title); // <p>Javascript+jQuery+Ajax</p>
+          		var p2 = $('<p/>').html(time); // <p>Javascript+jQuery+Ajax</p>
+          		var p3= $('<p/>').html(teacher); // <p>Javascript+jQuery+Ajax</p>
+          		
+          		div.append(p1).append(p2).append(p3);
+          		$('#result').append(div); */
+          		var subject= $(data).find('subject');//3
+          		console.log($(subject).children().length);//9
+          		/* for(var i = 0 ; i< $(subject).children().length ; i++){
+          			
+          		}; */
+          		subject.each(function(){
+          			var title = $(this).find('title').text();
+              		var time = $(this).find('time').text();
+              		var teacher = $(this).find('teacher').text();
+              		
+              		/* var div = $('<div/>');
+              		var p1 = $('<p/>').html(title); 
+              		var p2 = $('<p/>').html(time);
+              		var p3= $('<p/>').html(teacher);
+              		
+              		div.append(p1).append(p2).append(p3);
+              		$('#result').append(div); */
+              		
+              		var div = `<div>`;
+              		div += `<p>` + title + `<p>`;
+              		div += `<p>` + time + `<p>`;
+              		div += `<p>` + teacher + `<p>`;
+              		div += `</div>`;
+              		
+              		$('#result').append(div).append("<br/>");
+          		});//each
+          		
+              },
+              error : function(err){
+                console.log(err)
+              }
+            });
+      })
+    })
+  </script>
+</body>
+</html>

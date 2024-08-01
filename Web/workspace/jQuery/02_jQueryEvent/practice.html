@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <h3>key 이벤트 확인하기</h3>
+  <div id="input">
+    <input type="text">
+  </div>
+  <h3>결과</h3>
+  <div id="output"></div>
+  <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      function getKeyName(keyCode){
+        let keyMap = [
+                {code:8 ,name:"backspace"},
+                {code:9 ,name:"tab"},
+                {code:13 ,name:"enter"},
+                {code:16 ,name:"shift"},
+                {code:17 ,name:"ctrl"},
+                {code:18 ,name:"alt"},
+                {code:19 ,name:"pausebreak"},
+                {code:20 ,name:"capslock"},
+                {code:21 ,name:"han/eng"},
+                {code:25 ,name:"hanja"},
+                {code:27 ,name:"esc"},
+                {code:65 ,name:"A"},
+                {code:93 ,name:"a"}
+        ];
+        for(let i = 0 ; i < keyMap.length ;i ++){
+          if(keyMap[i].code == keyCode){
+            return keyMap[i].name;
+          }
+        }
+      }
+      $('#input > input[type="text"]').keyup(function(e){
+        $('#output').html(e.which + "번키가 눌려졌습니다. &gt;&gt;" + getKeyName(e.which));
+      })
+    })
+  </script>
+</body>
+</html>

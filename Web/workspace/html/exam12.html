@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Cell과 내용 사이의 여백 - cellpadding</h1>
+  <table border="1" cellspacing="50">
+    <tr>
+      <td>1-1</td>
+      <td>1-2</td>
+    </tr>
+  </table>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <td>1-1</td>
+      <td>1-2</td>
+    </tr>
+    <tr>
+      <td>2-1</td>
+      <td>2-2</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">3-1</td>
+    </tr>
+    <tr>
+      <td rowspan="2">
+        <!-- <a href="https://www.naver.com">
+          <img src="./image/img1.gif" width="50" height="50" alt="망상토끼">
+        </a> -->
+          <img src="./image/img1.gif" width="100" height="100" alt="망상토끼"
+          onclick="javascript:location.href='https://www.naver.com'"
+          style="cursor: pointer">
+      </td>
+      <td>4-2</td>
+    </tr>
+    <tr>
+      <td>5-2</td>
+    </tr>
+  </table>
+</body>
+</html>

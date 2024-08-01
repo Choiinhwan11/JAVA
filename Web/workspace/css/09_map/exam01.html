@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html { height: 100%; }
+        body { height: 100%; margin: 0; padding: 0; }
+        #map { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <!-- 1번 : Javascript API를 받아오는 부분 -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appKey=a71b18045ec9ad31b53e21aee7eed3ef"></script>
+    <script>
+        window.onload=function(){
+            //원하는 위치의 정확한 위도경도를 사이트에서 찾아서 변수로 지정해줍니다.http://map.esran.com/
+            var position = new kakao.maps.LatLng( 37.49940065922884, 127.02901856459081 );
+            //넣을 div를 찾아오기
+            var container = document.getElementById("map");
+            var options = {
+                center: position, //중심 좌표
+                level: 3 //지도의 확대 레벨 (기본값 : 3) 값이 작아질 수록 확대되서 보인다.
+            }
+            //설정한 삽입위치와 option들로써 지도 생성
+            var map = new kakao.maps.Map(container, options);
+
+            var marker = new kakao.maps.Marker({
+                position: position //지도 중심 좌표에 마커를 생성
+            });
+            marker.setMap(map); //map에 마커 표시
+        }
+    </script>
+</body>
+</html>

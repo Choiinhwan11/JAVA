@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+  <h1 class="title">$.ajax() 함수를 사용한 텍스트 읽기</h1>
+  <div class="exec">
+    <input type="button" value="txt파일 가져오기" id="mybtn"/>
+  </div>
+  <div class="console" id="result"></div>
+  <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      $('#mybtn').click(function(){
+        $.ajax({
+          type: 'get',
+          url: 'http://localhost:8080/workspace/AJax_jQuery/text/text01.txt',
+          dataType: 'text',
+          timeout: 30000,// 30 초안에 응답이 안될경우 타임아웃을 의미한다 . 
+          cache : false,
+          success : function(data){
+            $('#result').html(data);
+          },
+         
+          error : function(xhr, txtStatus, errorThrown){
+            $('div').html('<div>' + textStatus + '(HTTP-' + xhr.status + '/' + xhr.errorThrown + ')<div>') 
+          }
+          
+          
+          
+          
+        });
+      })
+    })
+  </script>
+</body>
+</html>
+<!-- 
+
+
+여기에서 각 매개변수의 역할은 다음과 같습니다:
+
+xhr: XMLHttpRequest 객체의 인스턴스입니다. 이 객체는 서버와의 통신을 관리하고 AJAX 요청을 수행합니다. xhr 객체를 사용하여 요청 및 응답의 속성 및 상태를 확인할 수 있습니다.
+
+txtStatus: 문자열 값으로, AJAX 요청의 상태를 나타냅니다. 주로 "success", "error", "timeout" 등의 값을 가집니다. 이 값은 AJAX 요청이 성공적으로 완료되었는지, 실패했는지 또는 타임아웃 되었는지를 나타냅니다.
+
+errorThrown: 문자열 값으로, AJAX 요청이 실패했을 때 발생한 오류를 설명합니다. 주로 HTTP 오류 코드나 JavaScript 예외 메시지가 포함됩니다. 이 값을 사용하여 오류가 발생한 원인을 파악하고 적절한 조치를 취할 수 있습니다. -->
+
+
+
+
+
+
+
+
+
+

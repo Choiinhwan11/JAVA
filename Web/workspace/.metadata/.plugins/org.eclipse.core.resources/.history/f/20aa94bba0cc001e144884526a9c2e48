@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+	<form>
+	
+		<fieldset>
+			<legend>로그인</legend>
+			<div>
+				<label for="user_id">아이디</label>
+				<input type="text" name="user_id" id="user_id">
+			</div>
+			<div>
+				<label for="user_password">비밀번호</label>
+				<input type="text" name="user_password" id="user_password">
+			</div>
+			<div>
+				<input type="submit" value="로그인">
+			</div>
+			<div class="Loader">
+				<img src="../img/Loader.gif">
+			</div>
+		</fieldset>
+	</form>
+	<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+	 <script>
+	   $(function(){
+		   $('#checkId').click(function(){
+			  var user_id = $('input[name="user_id"]').val();
+			  if(!user_id){
+				  alert("아이디를 입력하세요.");
+				  $('input[name="user_id"]').focus();
+				  return false;
+			  }
+			  $.get('../checkId/checkId.jsp', {'user_id' : user_id}, function(data){
+				  console.log(data);
+				  var result_txt = $(data).find('result').text();
+				  //"true" => true 변환, 문자열 =>boolean 변환
+				  var result=  eval("25 + 3");
+				  if(result){
+					  $('.console').html('<span style="color: red; font-weight: bold;">사용 불가능한 아이디</span>');
+				  }else{
+					  $('.console').html('<span style="color: red; font-weight: bold;">사용 가능한 아이디</span>');
+				  }
+			  });
+		   });
+	   });
+	 </script>
+</body>
+</html>
+<!--
+.done() / .fail()의 형태
+
+$.ajax({
+  url: 'URL',
+  type: 'POST',
+  data: yourData,
+  datatype: 'json'
+})
+.done(function(data, textStatus, xhr) { });
+.fail(function(xhr, textStatus, errorThrown) { });
+.always(function(data|xhr, textStatus, xhr|errorThrown) { });
+.then(function(data, textStatus, xhr|errorThrown) { });
+
+2. $(this).serialize()
+- 데이터를 보내기 위해 폼 요소 집합을 문자열로 인코딩한다.
+- 표준 URL-encoded 표기법으로 텍스트 문자열을 만든다.
+- 폼 요소 집합을 표현하는 jQuery 객체를 이용한다.
+  $('form').submit(
+   function() {
+      alert($(this).serialize());
+      return false;
+    }
+  );
+- 표준형태의 쿼리스트링을 만든다.
+  => a=1&b=2&c=3&d=4
+ -->

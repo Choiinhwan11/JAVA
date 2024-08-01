@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/event.css">
+  <style>
+    #result{
+      border: 1px solid #222;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>key 이벤트 확인하기</h1>
+  <div id="input">
+    <input type="text">
+  </div>
+  <h2>결과</h2>
+  <div id="result"></div>
+  <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(function(){
+      let down_count = 0;
+      let up_count = 0;
+      $('#input > input[type="text"]').keydown(function(){
+        down_count++;
+        $("#result").html("down_count: " + down_count + "/up_count: " + up_count)
+      });
+      $('#input > input[type="text"]').keyup(function(){
+        up_count++;
+        $("#result").html("down_count: " + down_count + "/up_count: " + up_count)
+      });
+    });
+  </script>
+</body>
+</html>

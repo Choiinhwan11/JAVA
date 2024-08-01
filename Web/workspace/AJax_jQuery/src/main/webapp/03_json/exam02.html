@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$.ajax()함수를 이용한 json 읽기</title>
+</head>
+<body>
+    <h1 class="title">$.ajax()함수를 이용한 json 읽기</h1>
+    <div class="exec">
+        <input type="button" value="json데이터를 가져오기" id="mybtn">
+    </div>
+    <div class="console" id="result"></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            $('#mybtn').click(function() {
+                $.ajax({
+                    type : 'get',
+                    url : '../json/sjon02.json', // 오타 수정: .json 파일 경로
+                    dataType : 'json',
+                    success : function(data) {
+                        console.log(JSON.stringify(data)); // 오타 수정: consol -> console
+
+                        var subjects = data.school.subject;
+                        for(var i = 0; i < subjects.length; i++) {
+                            var title = subjects[i].title;
+                            var time = subjects[i].time;
+                            var teacher = subjects[i].teacher;
+
+                            var ul = $('<ul>'); // 오타 수정: ul 변수를 만듦
+                            var li1 = $('<li>').text('Title: ' + title);
+                            var li2 = $('<li>').text('Time: ' + time);
+                            var li3 = $('<li>').text('Teacher: ' + teacher);
+
+                            $('#result').append(ul.append(li1).append(li2).append(li3)); // 수정: ul 변수를 사용하여 리스트 추가
+                            $('#result').append('<br/>');
+                        }
+                    },
+                    error : function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
